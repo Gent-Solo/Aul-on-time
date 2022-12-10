@@ -1,6 +1,6 @@
 from django.contrib import admin
-from base.models import Blog, Food
+from .models import Meal, OrderItem, Order
 
-admin.site.register(Blog)
-admin.site.register(Food)
-
+admin.site.register(Meal)
+admin.site.register(OrderItem)
+admin.site.register(Order)
