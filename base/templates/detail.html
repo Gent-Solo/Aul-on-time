@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Page</title>
+</head>
+<body>
+    {% for detail in food %}
+        {{ food.name }}
+        {{ food.price }}
+        {{ food.cafe }}
+        {{ food.description }}
+
+    {% endfor %}
+</body>
+</html>

@@ -37,7 +37,7 @@ class Meal(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     available = models.BooleanField(default=True)
-    discount_price = models.DecimalField(max_digits=3, decimal_places=2)
+    discount_price = models.DecimalField(max_digits=3, decimal_places=2, null=True)
 
     def get_absolute_url(self):
         return reverse("core:product", kwargs={
