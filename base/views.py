@@ -16,9 +16,9 @@ class MealDetailView(generic.DetailView):
 
 
 def add_to_cart(request, pk):
-    item = get_object_or_404(Meal, pk=pk)
+    meal = get_object_or_404(Meal, pk=pk)
     order_item, created = OrderItem.objects.get_or_create(
-        item=item,
+        meal=meal,
         user=request.user,
         ordered=False
     )
@@ -27,7 +27,7 @@ def add_to_cart(request, pk):
     if order_qs.exists():
         order = order_qs[0]
 
-        if order.items.filter(item__pk=item.pk).exists():
+        if order.items.filter(item__pk=meal.pk).exists():
             order_item.quantity += 1
             order_item.save()
             messages.info(request, "Added quantity Item")
@@ -42,6 +42,3 @@ def add_to_cart(request, pk):
         order.items.add(order_item)
         messages.info(request, "Item added to your cart")
         return redirect("core:product", pk=pk)
-
-
-
